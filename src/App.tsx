@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import DisplayFront from './practice-cards';
+import DisplayCard from './practice-cards';
 import './nav-buttons.css';
 import MakeFlashcard from './make-cards'
 
@@ -18,7 +18,7 @@ import MakeFlashcard from './make-cards'
           </span>
           <span className='practice-cards'>
             <input type={'button'} value='START FLASHCARDS' onClick={() => setShow(true)}/>
-            <DisplayFront onClose = {() => setShow(false)} show={show}/>
+            <DisplayCard onClose = {() => setShow(false)} show={show}/>
           </span>
         </span>
       </div>
