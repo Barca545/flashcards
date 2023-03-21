@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import './card.css';
-import * as deck from'./text-card.json'
-
+import * as deck from'./text-card.json';
 
 const cards: {[index:string]: any} = deck
 
@@ -39,19 +38,21 @@ function CardWrapper(props:any){
   function CardNavButtons(){
     function setId(change:number){
       if (currentid+change > (ids.length-2) || currentid+change < 0) 
-        {return (changeId(0))}
+        {return (changeId(ids.length-2))}
       else {return (changeId(currentid+change))}
     }
     function answerValue(right:boolean){
       timesViewed(viewed+1)
       if (!right) {timesWrong(wrong+1)
+        setId(1)}
+      else{
         setId(1)
       }}
     return (
       <div className='nav-buttons'>
+        <input type={'button'} value='BACK' onClick={()=>setId(-1)}/>
         <input type={'button'} value='RIGHT' onClick={()=>answerValue(true)}/>
         <input type={'button'} value='WRONG' onClick={()=>answerValue(false)}/>
-        <input type={'button'} value='BACK' onClick={()=>setId(-1)}/>
         <input type={'button'} value='SHUFFLE'/>
         <input type={'button'} value='FINISH' onClick={props.onClose}/>
       </div>
